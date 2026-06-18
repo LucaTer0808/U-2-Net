@@ -1,2 +1,3 @@
 /saved_models/u2net/
 .venv/
+__pycache__/
