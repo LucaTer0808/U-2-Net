@@ -144,20 +144,22 @@ def main():
 
             # Speicherbereinigung
             del d1, d2, d3, d4, d5, d6, d7
-        
-    
-        end_time = time.time()
 
-        total_time = end_time - start_time
-        time_per_image = total_time / num_images if num_images > 0 else 0
-        print(f"Fertig! Alle Masken wurden erfolgreich in '{OUTPUT_DIR}' gespeichert. Verwendete Zeit: {total_time:.2f} Sekunden (Durchschnitt pro Bild: {time_per_image:.2f} Sekunden)")
+    if torch.cuda.is_available():
+        torch.cuda.synchronize() 
 
-        eval_file_path = os.path.join(OUTPUT_DIR, "evaluation.txt")
+    end_time = time.time()
 
-        with open(eval_file_path, "w") as eval_file:
-            eval_file.write(f"Total images processed: {num_images}\n")
-            eval_file.write(f"Total inference time: {total_time:.2f} seconds\n")
-            eval_file.write(f"Average time per image: {time_per_image:.2f} seconds\n")
+    total_time = end_time - start_time
+    time_per_image = total_time / num_images if num_images > 0 else 0
+    print(f"Fertig! Alle Masken wurden erfolgreich in '{OUTPUT_DIR}' gespeichert. Verwendete Zeit: {total_time:.2f} Sekunden (Durchschnitt pro Bild: {time_per_image:.2f} Sekunden)")
+
+    eval_file_path = os.path.join(OUTPUT_DIR, "evaluation.txt")
+
+    with open(eval_file_path, "w") as eval_file:
+        eval_file.write(f"Total images processed: {num_images}\n")
+        eval_file.write(f"Total inference time: {total_time:.2f} seconds\n")
+        eval_file.write(f"Average time per image: {time_per_image:.2f} seconds\n")
 
 if __name__ == "__main__":
     main()
