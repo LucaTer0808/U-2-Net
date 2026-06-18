@@ -60,8 +60,8 @@ def main():
     parser.add_argument("--target", type=str, required=True, help="Pfad zum Verzeichnis, in dem die Vorhersagen gespeichert werden sollen")
 
     args = parser.parse_args()
-    INPUT_DIR = args.input_dir
-    OUTPUT_DIR = args.output_dir
+    INPUT_DIR = args.source
+    OUTPUT_DIR = args.target
 
     # --------- 1. get image path and name ---------
     model_name='u2net'#u2netp
