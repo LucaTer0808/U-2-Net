@@ -56,8 +56,8 @@ def save_output(image_name,pred,d_dir):
 
 def main():
     parser = argparse.ArgumentParser(description="U2-Net Inferenz für einen spezifischen Datensatz!")
-    parser.add_argument("--input-dir", type=str, required=True, help="Pfad zum Verzeichnis mit den Eingabebildern")
-    parser.add_argument("--output-dir", type=str, required=True, help="Pfad zum Verzeichnis, in dem die Vorhersagen gespeichert werden sollen")
+    parser.add_argument("--source", type=str, required=True, help="Pfad zum Verzeichnis mit den Eingabebildern")
+    parser.add_argument("--target", type=str, required=True, help="Pfad zum Verzeichnis, in dem die Vorhersagen gespeichert werden sollen")
 
     args = parser.parse_args()
     INPUT_DIR = args.input_dir
